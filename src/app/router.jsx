@@ -1,25 +1,25 @@
 import { createBrowserRouter } from "react-router-dom";
-import LoginPage from "../pages/login/loginPage";
-import DashboardPage from "../pages/dashboard/dashboardPage";
-import ProtectedRoute from "../shared/lib/protectedRoute";
+import LoginPage from "../pages/loginPage";
 import HomePage from "../pages/homePage";
+import PrivateRoute from "../etities/user/model/privateRoute";
+import AccountPage from "../pages/accountPage";
 
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <DashboardPage />
-      </ProtectedRoute>
-    ),
+    Component: LoginPage
   },
   {
     path: '/',
-    element: <HomePage/>
+    Component: HomePage
+  },
+  {
+    path: '/account',
+    element:
+        <PrivateRoute>
+            <AccountPage/>
+        </PrivateRoute>
+    
   }
 ]);
 
